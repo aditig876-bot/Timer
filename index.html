@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+2	+
+<html lang="en">
+3	+
+<head>
+4	+
+    <meta charset="UTF-8">
+5	+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6	+
+    <title>Simple Timer</title>
+7	+
+    <style>
+8	+
+        body { font-family: sans-serif; text-align: center; padding-top: 100px; background: #eef2f3; }
+9	+
+        #display { font-size: 4rem; font-weight: bold; margin-bottom: 20px; font-family: monospace; }
+10	+
+        button { font-size: 1.2rem; padding: 10px 20px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; background: #007bff; color: white; }
+11	+
+        button:hover { background: #0056b3; }
+12	+
+    </style>
+13	+
+</head>
+14	+
+<body>
+15	+
+    <h1>Stopwatch Timer</h1>
+16	+
+    <div id="display">00:00</div>
+17	+
+    <button onclick="startTimer()">Start</button>
+18	+
+    <button onclick="stopTimer()">Stop</button>
+19	+
+    <button onclick="resetTimer()">Reset</button>
+20	+
+21	+
+    <script>
+22	+
+        let timer;
+23	+
+        let seconds = 0;
+24	+
+        function startTimer() {
+25	+
+            clearInterval(timer);
+26	+
+            timer = setInterval(() => {
+27	+
+                seconds++;
+28	+
+                let mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+29	+
+                let secs = (seconds % 60).toString().padStart(2, '0');
+30	+
+                document.getElementById('display').innerText = `${mins}:${secs}`;
+31	+
+            }, 1000);
+32	+
+        }
+33	+
+        function stopTimer() { clearInterval(timer); }
+34	+
+        function resetTimer() { clearInterval(timer); seconds = 0; document.getElementById('display').innerText = "00:00"; }
+35	+
+    </script>
+36	+
+</body>
+37	+
+</html>
